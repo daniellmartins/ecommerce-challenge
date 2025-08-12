@@ -1,6 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 
+import productsRouter from './routes/products';
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -13,6 +15,8 @@ app.use(express.json());
 app.get('/health', (_, res) => {
   res.json({ status: 'OK', message: 'E-commerce API is running' });
 });
+
+app.use('/api/products', productsRouter);
 
 app.use((_, res) => {
   res.status(404).json({
