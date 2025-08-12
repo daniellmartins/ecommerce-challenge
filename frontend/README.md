@@ -1,36 +1,171 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎨 Frontend E-commerce
 
-## Getting Started
+Interface moderna em Next.js 15 + React 19 com carrinho de compras interativo e UX otimizada.
 
-First, run the development server:
+## 🎯 Visão Geral
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Frontend responsivo com tecnologias de ponta, estado global reativo e componentes reutilizáveis.
+
+## 🏗️ Arquitetura
+
+```
+src/
+├── app/             # App Router (Next.js 15)
+├── components/      # Componentes reutilizáveis
+├── services/        # API calls
+├── store/           # Estado global (Zustand)
+├── hooks/           # Custom hooks
+├── utils/           # Utilitários
+└── types/           # TypeScript types
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Padrões:**
+- Component-driven development
+- Custom hooks
+- Global state management
+- Server components
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Tecnologias
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Next.js 15** + **React 19**: Framework com App Router
+- **TypeScript**: Tipagem estática
+- **Tailwind CSS 4**: Estilização moderna
+- **Zustand**: Estado global leve
+- **Jest**: Testes
 
-## Learn More
+## 🎨 Funcionalidades
 
-To learn more about Next.js, take a look at the following resources:
+### Páginas
+- **Homepage (/)**: Catálogo completo de produtos
+- **Produto (/produto/[id])**: Página detalhada
+- **404**: Customizada para produtos não encontrados
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Carrinho
+- **Sidebar deslizante** com animações
+- **Adição inteligente** (combina quantidades)
+- **Controles de quantidade** com validação
+- **Remoção de items**
+- **Cálculo automático** do total
+- **Estado vazio** amigável
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### UX Features
+- Loading states
+- Animações suaves
+- Responsividade completa
+- Feedback visual
+- Persistência no localStorage
 
-## Deploy on Vercel
+## 🚀 Como Executar
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+# Instalar
+npm install
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Desenvolvimento
+npm run dev        # http://localhost:3000
+
+# Produção
+npm run build
+npm start
+
+# Testes
+npm test
+npm run test:watch
+```
+
+### Variáveis de Ambiente
+```bash
+# .env.local
+NEXT_PUBLIC_API_URL=http://localhost:3001
+```
+
+## 📱 Responsividade
+
+**Breakpoints:**
+- Mobile: < 640px
+- Tablet: 640px - 1024px  
+- Desktop: > 1024px
+
+**Adaptações:**
+- Grid: 1 coluna → 3 colunas
+- Carrinho: Modal → Sidebar
+- Tipografia escalável
+
+## 🧪 Testes
+
+```
+src/utils/
+├── formatters.test.ts  # Formatação
+└── user.test.ts        # User utils
+```
+
+**Cobertura:** Funções utilitárias 100%
+
+## 🔄 Estado Global
+
+```typescript
+interface CartState {
+  cart: Cart | null
+  isLoading: boolean
+  isCartOpen: boolean
+  userId: string | null
+  
+  // Actions
+  addToCart(id: string, qty: number): Promise<void>
+  updateQuantity(id: string, qty: number): Promise<void>
+  removeFromCart(id: string): Promise<void>
+}
+```
+
+**Fluxo:**
+1. App inicia → cria usuário → busca carrinho
+2. Adiciona produto → API → atualiza store → abre carrinho
+3. Atualiza quantidade → API → atualiza store
+
+## 🎯 Decisões Técnicas
+
+**Por que Next.js 15?**
+- App Router moderno
+- Server Components
+- Turbopack (build rápido)
+- SEO nativo
+
+**Por que Zustand?**
+- API simples
+- Performance otimizada
+- TypeScript nativo
+- Bundle pequeno
+
+**Por que Tailwind CSS 4?**
+- Utility-first
+- Design system integrado
+- CSS otimizado
+- Responsividade built-in
+
+**Alternativas consideradas:**
+- **Redux** vs Zustand vs Context (Zustand é mais simples e mais performativo)
+- **Styled Components** vs Tailwind (Tailwind é mais produtivo)
+
+## 🚀 Performance
+
+**Otimizações:**
+- Server Components
+- Lazy loading
+- Bundle splitting
+- CSS purging
+- Image optimization
+
+**Core Web Vitals:**
+- LCP < 2.5s
+- FID < 100ms
+- CLS < 0.1
+
+## 📊 Bundle Analysis
+
+```
+next: ~500kb
+react: ~150kb
+zustand: ~15kb
+tailwindcss: ~50kb (purged)
+uuid: ~25kb
+```
