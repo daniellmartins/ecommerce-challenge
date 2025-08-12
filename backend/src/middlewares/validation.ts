@@ -45,8 +45,6 @@ export const validateProductId = (
 ): void => {
   const { id } = req.params;
 
-  console.log(id)
-
   if (!id || id.trim() === '') {
     const response: ApiResponse<null> = {
       success: false,
