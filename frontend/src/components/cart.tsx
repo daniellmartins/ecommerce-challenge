@@ -16,8 +16,6 @@ export default function Cart() {
   const removeFromCart = useCartStore((state) => state.removeFromCart);
   const updateQuantity = useCartStore((state) => state.updateQuantity);
 
-  if (!isCartOpen) return null;
-
   const handleQuantityChange = (productId: string, newQuantity: number) => {
     if (newQuantity <= 0) {
       removeFromCart(productId);
@@ -27,13 +25,19 @@ export default function Cart() {
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-hidden">
+    <div className={`fixed inset-0 z-50 overflow-hidden transition-all duration-300 ${
+      isCartOpen ? 'pointer-events-auto' : 'pointer-events-none'
+    }`}>
       <div 
-        className="absolute inset-0 bg-black/50 transition-opacity"
+        className={`absolute inset-0 bg-black/50 transition-opacity duration-300 ease-in-out ${
+          isCartOpen ? 'opacity-100' : 'opacity-0'
+        }`}
         onClick={toggleCart}
       />
       
-      <div className="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-xl">
+      <div className={`absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-xl transform transition-transform duration-300 ease-in-out ${
+        isCartOpen ? 'translate-x-0' : 'translate-x-full'
+      }`}>
         <div className="flex h-full flex-col">
           <CartHeader onClose={toggleCart} />
 
