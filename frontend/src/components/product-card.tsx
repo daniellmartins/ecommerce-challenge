@@ -10,7 +10,7 @@ interface ProductCardProps {
 export default function ProductCard({ product }: ProductCardProps) {
   return (
     <Link href={`/produto/${product.id}`} className="group h-full">
-      <div className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow border h-full flex flex-col">
+      <div data-testid="product-card" className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow border h-full flex flex-col">
         <div className="aspect-square relative bg-gray-100 rounded-t-lg overflow-hidden">
           <Image
             src={product.image}
@@ -34,13 +34,13 @@ export default function ProductCard({ product }: ProductCardProps) {
           <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">
             {product.category}
           </p>
-          <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
+          <h3 data-testid="product-name" className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
             {product.name}
           </h3>
           
           <div className="space-y-1 mt-auto">
             <div className="flex items-baseline space-x-2">
-              <span className="text-xl font-bold text-gray-900">
+              <span data-testid="product-price" className="text-xl font-bold text-gray-900">
                 {formatPrice(product.price)}
               </span>
               {product.originalPrice && (

@@ -8,9 +8,7 @@ export function useInitializeCart() {
   const initializeUser = useCartStore((state) => state.initializeUser);
 
   useEffect(() => {
-    // Primeiro inicializar o usuário
     initializeUser();
-    // Depois carregar o carrinho
     refreshCart();
   }, [refreshCart, initializeUser]);
 }

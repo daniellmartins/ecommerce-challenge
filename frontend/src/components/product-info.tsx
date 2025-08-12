@@ -8,7 +8,7 @@ interface ProductInfoProps {
 
 export function ProductInfo({ product }: ProductInfoProps) {
   return (
-    <>
+    <div data-testid="product-info">
       <div>
         <p className="text-sm text-gray-500 uppercase tracking-wide">{product.category}</p>
         <h1 className="text-3xl font-bold text-gray-900 mt-1">{product.name}</h1>
@@ -38,6 +38,6 @@ export function ProductInfo({ product }: ProductInfoProps) {
         <h3 className="text-lg font-medium text-gray-900 mb-2">Descrição</h3>
         <p className="text-gray-600 leading-relaxed">{product.description}</p>
       </div>
-    </>
+    </div>
   );
 }

@@ -35,7 +35,7 @@ export default function Cart() {
         onClick={toggleCart}
       />
       
-      <div className={`absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-xl transform transition-transform duration-300 ease-in-out ${
+      <div data-testid="cart" className={`absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-xl transform transition-transform duration-300 ease-in-out ${
         isCartOpen ? 'translate-x-0' : 'translate-x-full'
       }`}>
         <div className="flex h-full flex-col">
