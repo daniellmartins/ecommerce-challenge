@@ -2,7 +2,7 @@ import { Product } from '../types';
 
 export const mockProducts: Product[] = [
   {
-    id: '1',
+    id: 'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
     name: 'Smartphone Galaxy Pro',
     price: 899.99,
     originalPrice: 1199.99,
@@ -12,7 +12,7 @@ export const mockProducts: Product[] = [
     inStock: true
   },
   {
-    id: '2',
+    id: 'b2c3d4e5-f6g7-8901-bcde-f21234567891',
     name: 'Notebook UltraBook 15"',
     price: 1299.99,
     description: 'Notebook ultra fino e leve com processador Intel i7, 16GB RAM e SSD 512GB. Ideal para trabalho e estudos.',
@@ -21,7 +21,7 @@ export const mockProducts: Product[] = [
     inStock: true
   },
   {
-    id: '3',
+    id: 'c3d4e5f6-g7h8-9012-cdef-321234567892',
     name: 'Fone de Ouvido Wireless Premium',
     price: 199.99,
     originalPrice: 299.99,

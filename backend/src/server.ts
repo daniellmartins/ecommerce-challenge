@@ -2,6 +2,8 @@ import express from 'express';
 import cors from 'cors';
 
 import productsRouter from './routes/products';
+import cartRouter from './routes/cart';
+import { errorHandler } from './middlewares';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -17,6 +19,7 @@ app.get('/health', (_, res) => {
 });
 
 app.use('/api/products', productsRouter);
+app.use('/api/cart', cartRouter);
 
 app.use((_, res) => {
   res.status(404).json({
@@ -24,6 +27,8 @@ app.use((_, res) => {
     error: 'Endpoint not found'
   });
 });
+
+app.use(errorHandler);
 
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
