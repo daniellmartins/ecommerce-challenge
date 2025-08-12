@@ -2,6 +2,8 @@ import "./globals.css";
 
 import type { Metadata } from "next";
 import Header from "@/components/header";
+import Cart from "@/components/cart";
+import CartInitializer from "@/components/cart-initializer";
 
 export const metadata: Metadata = {
   title: "E-Shop - Sua loja online",
@@ -15,11 +17,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body
-        className="antialiased"
-      >
-        <Header />
-        <main>{children}</main>
+      <body>
+        <CartInitializer>
+          <Header />
+          <main>{children}</main>
+          <Cart />
+        </CartInitializer>
       </body>
     </html>
   );
