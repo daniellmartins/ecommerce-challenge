@@ -2,6 +2,8 @@
 
 Sistema de e-commerce simples desenvolvido com Next.js e Node.js.
 
+Demo: https://ecommerce-challenge-rnc7.vercel.app/
+
 ![Homepage do E-commerce](assets/homepage.png)
 
 ## 🎯 Sobre o Projeto
