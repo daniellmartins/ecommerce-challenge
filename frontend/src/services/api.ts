@@ -1,7 +1,7 @@
 import { Product, Cart, AddToCartRequest, ApiResponse } from '@/types';
 import { UserUtils } from '@/utils/user';
 
-const API_BASE_URL = `${process.env.NEXT_PUBLIC_API_URL}/api`;
+const API_BASE_URL = `${process.env.NEXT_PUBLIC_API_URL!}/api`;
 
 class ApiService {
   private async fetchApi<T>(endpoint: string, options?: RequestInit): Promise<ApiResponse<T>> {
