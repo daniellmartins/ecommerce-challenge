@@ -4,6 +4,7 @@ import cors from 'cors';
 import productsRouter from './routes/products';
 import cartRouter from './routes/cart';
 import { errorHandler } from './middlewares';
+import { swaggerUi, specs } from './config/swagger';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -17,6 +18,11 @@ app.use(express.json());
 app.get('/health', (_, res) => {
   res.json({ status: 'OK', message: 'E-commerce API is running' });
 });
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs, {
+  customCss: '.swagger-ui .topbar { display: none }',
+  customSiteTitle: 'E-commerce API Documentation'
+}));
 
 app.use('/api/products', productsRouter);
 app.use('/api/cart', cartRouter);
@@ -33,4 +39,5 @@ app.use(errorHandler);
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
   console.log(`📍 Health check: http://localhost:${PORT}/health`);
+  console.log(`📚 API Documentation: http://localhost:${PORT}/api-docs`);
 });
